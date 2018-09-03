@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: GitHub | 的川</title>
+  <title>Java面试题笔记之Mybatis | 的川</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="等风来不如追风去">
-<meta property="og:type" content="website">
-<meta property="og:title" content="的川">
-<meta property="og:url" content="http://yoursite.com/tags/GitHub/index.html">
+  <meta name="description" content="初出茅庐，Java小白寻求Offer序列">
+<meta name="keywords" content="Java,ORM,Mybatis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java面试题笔记之Mybatis">
+<meta property="og:url" content="http://yoursite.com/2018/09/03/Java面试题笔记之Mybatis/index.html">
 <meta property="og:site_name" content="的川">
-<meta property="og:description" content="等风来不如追风去">
+<meta property="og:description" content="初出茅庐，Java小白寻求Offer序列">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-03T14:19:07.128Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="的川">
-<meta name="twitter:description" content="等风来不如追风去">
+<meta name="twitter:title" content="Java面试题笔记之Mybatis">
+<meta name="twitter:description" content="初出茅庐，Java小白寻求Offer序列">
   
     <link rel="alternative" href="/atom.xml" title="的川" type="application/atom+xml">
   
@@ -154,64 +156,301 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Java面试题笔记之Mybatis" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/03/Hexo-GitHub搭建个人博客记录/" class="archive-article-date">
-  	<time datetime="2018-09-02T16:57:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-03</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/03/Hexo-GitHub搭建个人博客记录/">Hexo-GitHub搭建个人博客记录</a>
+    <h1 class="article-title" itemprop="name">
+      Java面试题笔记之Mybatis
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/09/03/Java面试题笔记之Mybatis/" class="archive-article-date">
+  	<time datetime="2018-09-03T03:17:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>初出茅庐，Java小白寻求Offer序列</p>
+<a id="more"></a>    
+<p><strong>什么是ORM？</strong><br>对象关系映射（Object-Relational Mapping，简称ORM）是一种为了解决程序的面向对象模型与数据库的关系模型互不匹配问题的技术；简单的说，ORM是通过使用描述对象和数据库之间映射的元数据（在Java中可以用XML或者是注解），将程序中的对象自动持久化到关系数据库中或者将关系数据库表中的行转换成Java对象，其本质上就是将数据从一种形式转换到另外一种形式。</p>
+<p><strong>持久层设计要考虑的问题有哪些？你用过的持久层框架有哪些？</strong></p>
+<ul>
+<li>所谓”持久”就是将数据保存到可掉电式存储设备中以便今后使用，简单的说，就是将内存中的数据保存到关系型数据库、文件系统、消息队列等提供持久化支持的设备中。</li>
+<li>持久层就是系统中专注于实现数据持久化的相对独立的层面。</li>
+</ul>
+<p>持久层设计的目标包括：</p>
+<ul>
+<li>数据存储逻辑的分离，提供抽象化的数据访问接口。</li>
+<li>数据访问底层实现的分离，可以在不修改代码的情况下切换底层实现。</li>
+<li>资源管理和调度的分离，在数据访问层实现统一的资源调度（如缓存机制）。</li>
+<li>数据抽象，提供更面向对象的数据操作。</li>
+</ul>
+<p><strong>MyBatis编程步骤是什么样的？</strong></p>
+<p>① 创建SqlSessionFactory<br>② 通过SqlSessionFactory创建SqlSession<br>③ 通过sqlsession执行数据库操作<br>④ 调用session.commit()提交事务<br>⑤ 调用session.close()关闭会话</p>
+<p><strong>Xml映射文件中，除了常见的select|insert|updae|delete标签之外，还有哪些标签？</strong></p>
+<p><resultmap>、<parametermap>、<sql>、<include>、<selectkey>，加上动态 sql 的9个标签，trim|where|set|foreach|if|choose|when|otherwise|bind等</selectkey></include></sql></parametermap></resultmap></p>
+<p><strong>#{} 和 ${} 的区别是什么？</strong></p>
+<ul>
+<li><strong>#{}</strong>是预编译处理，<strong>${}</strong>是字符串替换。</li>
+<li>Mybatis在处理#{}时，会将sql中的#{}替换为?号，调用PreparedStatement的set方法来赋值。</li>
+<li>Mybatis在处理${}时，就是把${}替换成变量的值。</li>
+<li>使用#{}可以有效的防止SQL注入，提高系统安全性。</li>
+</ul>
+<p><strong>解释一下MyBatis中命名空间（namespace）的作用。</strong><br>在大型项目中，可能存在大量的SQL语句，这时候为每个SQL语句起一个唯一的标识（ID）就变得并不容易了。为了解决这个问题，在MyBatis中，可以为每个映射文件起一个唯一的命名空间，这样定义在这个映射文件中的每个SQL语句就成了定义在这个命名空间中的一个ID。只要我们能够保证每个命名空间中这个ID是唯一的，即使在不同映射文件中的语句ID相同，也不会再产生冲突了。</p>
+<p><strong>MyBatis中的动态SQL是什么意思？</strong></p>
+<p>对于一些复杂的查询，我们可能会指定多个查询条件，但是这些条件可能存在也可能不存在，例如在58同城上面找房子，我们可能会指定面积、楼层和所在位置来查找房源，也可能会指定面积、价格、户型和所在位置来查找房源，此时就需要根据用户指定的条件动态生成SQL语句。如果不使用持久层框架我们可能需要自己拼装SQL语句，还好MyBatis提供了动态SQL的功能来解决这个问题。MyBatis中用于实现动态SQL的元素主要有：</p>
+<ul>
+<li>if</li>
+<li>choose / when / otherwise</li>
+<li>trim</li>
+<li>where</li>
+<li>set</li>
+<li>foreach</li>
+</ul>
+<p><strong>当实体类中的属性名和表中的字段名不一样 ，怎么办 ？</strong></p>
+<ul>
+<li>通过在查询的sql语句中定义字段名的别名，让字段名的别名和实体类的属性名一致 </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;selectorder&quot; parametertype=&quot;int&quot; resultetype=&quot;me.gacl.domain.order&quot;&gt; </span><br><span class="line">   select order_id id, order_no orderno ,order_price price form orders where order_id=#&#123;id&#125;; </span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>通过<resultmap>来映射字段名和实体类属性名的一一对应的关系 </resultmap></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;getOrder&quot; parameterType=&quot;int&quot; resultMap=&quot;orderresultmap&quot;&gt;</span><br><span class="line">    select * from orders where order_id = #&#123;id&#125;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;resultMap type=&quot;me.gacl.domain.order&quot; id=&quot;orderresultmap&quot;&gt; </span><br><span class="line">    &lt;!–用id属性来映射主键字段–&gt; </span><br><span class="line">    &lt;id property=&quot;id&quot; column=&quot;order_id&quot;&gt; </span><br><span class="line">    &lt;!–用result属性来映射非主键字段，property为实体类属性名，column为数据表中的属性–&gt; </span><br><span class="line">    &lt;result property = &quot;orderno&quot; column =&quot;order_no&quot;/&gt; </span><br><span class="line">    &lt;result property = &quot;price&quot; column = &quot;order_price&quot; /&gt; </span><br><span class="line">&lt;/reslutMap&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>模糊查询like语句该怎么写?</strong></p>
+<ul>
+<li><p>在Java代码中添加sql通配符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">string wildcardname = &quot;%smi%&quot;; </span><br><span class="line">list&lt;name&gt; names = mapper.selectlike(wildcardname);</span><br><span class="line"></span><br><span class="line">&lt;select id=&quot;selectlike&quot;&gt; </span><br><span class="line"> select * from foo where bar like #&#123;value&#125; </span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在sql语句中拼接通配符，会引起sql注入</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=”selectlike”&gt; </span><br><span class="line"> select * from foo where bar like &quot;%&quot;#&#123;value&#125;&quot;%&quot;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>通常一个Xml映射文件，都会写一个Dao接口与之对应，请问，这个Dao接口的工作原理是什么？Dao接口里的方法，参数不同时，方法能重载吗？</strong></p>
+<ul>
+<li>Dao接口，就是人们常说的Mapper接口。</li>
+<li>接口的全限名，就是映射文件中的namespace的值。</li>
+<li>接口的方法名，就是映射文件中MappedStatement的id值。</li>
+<li>接口方法内的参数，就是传递给sql的参数。</li>
+<li>Mapper接口是没有实现类的，当调用接口方法时，接口全限名+方法名拼接字符串作为key值，可唯一定位一个MappedStatement，举例：com.mybatis3.mappers.StudentDao.findStudentById，可以唯一找到namespace为com.mybatis3.mappers.StudentDao下面 id = findStudentById的MappedStatement。</li>
+<li>在Mybatis中，每一个<select>、<insert>、<update>、<delete>标签，都会被解析为一个MappedStatement对象。</delete></update></insert></select></li>
+<li>Dao接口里的方法，是不能重载的，因为是全限名+方法名的保存和寻找策略。</li>
+<li>Dao接口的工作原理是JDK动态代理，Mybatis运行时会使用JDK动态代理为Dao接口生成代理proxy对象，代理对象proxy会拦截</li>
+</ul>
+<p><strong>Mybatis是如何将sql执行结果封装为目标对象并返回的？都有哪些映射形式？</strong></p>
+<p>第一种是使用<resultmap>标签，逐一定义列名和对象属性名之间的映射关系。</resultmap></p>
+<ul>
+<li>第二种是使用sql列的别名功能，将列别名书写为对象属性名，比如T_NAME AS NAME，对象属性名一般是name，小写，但是列名不区分大小写，Mybatis会忽略列名大小写，智能找到与之对应对象属性名，你甚至可以写成T_NAME AS NaMe，Mybatis一样可以正常工作。</li>
+</ul>
+<p>有了列名与属性名的映射关系后，Mybatis通过反射创建对象，同时使用反射给对象的属性逐一赋值并返回，那些找不到映射关系的属性，是无法完成赋值的。</p>
+<p><strong>如何执行批量插入?</strong></p>
+<p>首先，创建一个简单的insert语句:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;insert id = &quot;insertname&quot;&gt; </span><br><span class="line"> insert into names (name) values (#&#123;value&#125;) </span><br><span class="line">&lt;/insert&gt;</span><br></pre></td></tr></table></figure></p>
+<p>然后在java代码中像下面这样执行批处理插入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">list&lt;string&gt; names = new arraylist(); </span><br><span class="line">names.add(&quot;fred&quot;); </span><br><span class="line">names.add(&quot;barney&quot;); </span><br><span class="line">names.add(&quot;betty&quot;); </span><br><span class="line">names.add(&quot;wilma&quot;); </span><br><span class="line"></span><br><span class="line">// 注意这里 executortype.batch </span><br><span class="line">sqlsession sqlsession = sqlsessionfactory.opensession(executortype.batch); </span><br><span class="line">try &#123; </span><br><span class="line">     namemapper mapper = sqlsession.getmapper(namemapper.class); </span><br><span class="line">     for (string name : names) &#123; </span><br><span class="line">     	mapper.insertname(name); </span><br><span class="line"> 	&#125; </span><br><span class="line">     sqlsession.commit(); </span><br><span class="line">&#125; finally &#123; </span><br><span class="line">     sqlsession.close(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>如何获取自动生成的(主)键值?</strong></p>
+<p>insert 方法总是返回一个int值 ， 这个值代表的是插入的行数，而自动生成的键值在 insert 方法执行完后可以被设置到传入的参数对象中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;insert id=&quot;insertname&quot; usegeneratedkeys=&quot;true&quot; keyproperty=&quot;id&quot;&gt; </span><br><span class="line"> insert into names (name) values (#&#123;name&#125;) </span><br><span class="line">&lt;/insert&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>在mapper中如何传递多个参数?</strong></p>
+<ul>
+<li>第一种</li>
+</ul>
+<p>//DAO层的函数<br>Public UserselectUser(String name,String area);<br>//对应的xml,#{0}代表接收的是dao层中的第一个参数，#{1}代表dao层中第二参数，更多参数一致往后加即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;selectUser&quot;resultMap=&quot;BaseResultMap&quot;&gt; </span><br><span class="line">    select *  fromuser_user_t   whereuser_name = #&#123;0&#125; anduser_area = #&#123;1&#125; </span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>第二种：使用 @param 注解: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import org.apache.ibatis.annotations.param; </span><br><span class="line">public interface usermapper &#123; </span><br><span class="line"> user selectuser(@param(&quot;username&quot;) string username, </span><br><span class="line"> @param(&quot;hashedpassword&quot;) string hashedpassword); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>然后，就可以在xml像下面这样使用（推荐封装为一个map,作为单个参数传递给mapper）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;selectuser&quot; resulttype=&quot;user&quot;&gt; </span><br><span class="line">     select id, username, hashedpassword </span><br><span class="line">     from some_table </span><br><span class="line">     where username = #&#123;username&#125; </span><br><span class="line">     and hashedpassword = #&#123;hashedpassword&#125; </span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Mybatis动态sql是做什么的？都有哪些动态sql？能简述一下动态sql的执行原理不？</strong></p>
+<p>Mybatis动态sql可以让我们在Xml映射文件内，以标签的形式编写动态sql，完成逻辑判断和动态拼接sql的功能。<br>Mybatis提供了9种动态sql标签：trim|where|set|foreach|if|choose|when|otherwise|bind。<br>其执行原理为，使用OGNL从sql参数对象中计算表达式的值，根据表达式的值动态拼接sql，以此来完成动态sql的功能。</p>
+<p><strong>Mybatis的Xml映射文件中，不同的Xml映射文件，id是否可以重复？</strong></p>
+<p>不同的Xml映射文件，如果配置了namespace，那么id可以重复；如果没有配置namespace，那么id不能重复；毕竟namespace不是必须的，只是最佳实践而已。</p>
+<p>原因就是namespace+id是作为Map&lt;String,MappedStatement&gt;的key使用的，如果没有namespace，就剩下id，那么，id重复会导致数据互相覆盖。有了namespace，自然id就可以重复，namespace不同，namespace+id自然也就不同。</p>
+<p><strong>为什么说Mybatis是半自动ORM映射工具？它与全自动的区别在哪里？</strong></p>
+<p>Hibernate属于全自动ORM映射工具，使用Hibernate查询关联对象或者关联集合对象时，可以根据对象关系模型直接获取，所以它是全自动的。而Mybatis在查询关联对象或关联集合对象时，需要手动编写sql来完成，所以，称之为半自动ORM映射工具。</p>
+<p> <strong>一对一，一对多的关联查询 ？</strong></p>
+<ul>
+<li>一对一关联查询</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--association  一对一关联查询 --&gt;  </span><br><span class="line">&lt;select id=&quot;getClass&quot; parameterType=&quot;int&quot; resultMap=&quot;ClassesResultMap&quot;&gt;  </span><br><span class="line">    select * from class c,teacher t where c.teacher_id=t.t_id and c.c_id=#&#123;id&#125;  </span><br><span class="line">&lt;/select&gt;  </span><br><span class="line">&lt;resultMap type=&quot;com.lcb.user.Classes&quot; id=&quot;ClassesResultMap&quot;&gt;  </span><br><span class="line">    &lt;!-- 实体类的字段名和数据表的字段名映射 --&gt;  </span><br><span class="line">    &lt;id property=&quot;id&quot; column=&quot;c_id&quot;/&gt;  </span><br><span class="line">    &lt;result property=&quot;name&quot; column=&quot;c_name&quot;/&gt;  </span><br><span class="line">    &lt;association property=&quot;teacher&quot; javaType=&quot;com.lcb.user.Teacher&quot;&gt;  </span><br><span class="line">        &lt;id property=&quot;id&quot; column=&quot;t_id&quot;/&gt;  </span><br><span class="line">        &lt;result property=&quot;name&quot; column=&quot;t_name&quot;/&gt;  </span><br><span class="line">    &lt;/association&gt;  </span><br><span class="line">&lt;/resultMap&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>一对多关联查询<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--collection  一对多关联查询 --&gt;  </span><br><span class="line">&lt;select id=&quot;getClass2&quot; parameterType=&quot;int&quot; resultMap=&quot;ClassesResultMap2&quot;&gt;  </span><br><span class="line">    select * from class c,teacher t,student s where c.teacher_id=t.t_id and c.c_id=s.class_id and c.c_id=#&#123;id&#125;  </span><br><span class="line">&lt;/select&gt;  </span><br><span class="line">&lt;resultMap type=&quot;com.lcb.user.Classes&quot; id=&quot;ClassesResultMap2&quot;&gt;  </span><br><span class="line">    &lt;id property=&quot;id&quot; column=&quot;c_id&quot;/&gt;  </span><br><span class="line">    &lt;result property=&quot;name&quot; column=&quot;c_name&quot;/&gt;  </span><br><span class="line">    &lt;association property=&quot;teacher&quot; javaType=&quot;com.lcb.user.Teacher&quot;&gt;  </span><br><span class="line">        &lt;id property=&quot;id&quot; column=&quot;t_id&quot;/&gt;  </span><br><span class="line">        &lt;result property=&quot;name&quot; column=&quot;t_name&quot;/&gt;  </span><br><span class="line">    &lt;/association&gt;  </span><br><span class="line">    &lt;collection property=&quot;student&quot; ofType=&quot;com.lcb.user.Student&quot;&gt;  </span><br><span class="line">        &lt;id property=&quot;id&quot; column=&quot;s_id&quot;/&gt;  </span><br><span class="line">        &lt;result property=&quot;name&quot; column=&quot;s_name&quot;/&gt;  </span><br><span class="line">    &lt;/collection&gt;  </span><br><span class="line">&lt;/resultMap&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>Mybatis是如何进行分页的？分页插件的原理是什么？</strong></p>
+<p>Mybatis使用RowBounds对象进行分页，它是针对ResultSet结果集执行的内存分页，而非物理分页，可以在sql内直接书写带有物理分页的参数来完成物理分页功能，也可以使用分页插件来完成物理分页。</p>
+<p>分页插件的基本原理是使用Mybatis提供的插件接口，实现自定义插件，在插件的拦截方法内拦截待执行的sql，然后重写sql，根据dialect方言，添加对应的物理分页语句和物理分页参数。</p>
+<p><strong>Mybatis缓存机制</strong></p>
+<p>MyBatis有两级缓存</p>
+<ul>
+<li>一级缓存是SqlSession级别的缓存，他的作用域是同一个SqlSession，在同一个sqlSession中执行相同的Sql语句，第一次执行完毕的会将结果集写到缓存中，第二次就会从缓存中获取数据；</li>
+<li>二级缓存是mapper级别的缓存，作用域是mapper的同一个namespace，不同的sqlsession在同一个namespace下执行相同的sql语句，第一次查询的结果缓存到缓存中，第二次则可从缓存中获取数据。</li>
+</ul>
+<p>Mybatis默认开启一级缓存，没有开启二级缓存，二级缓存需要在xml配置中手动配置开启。</p>
+<p><strong>Mybatis与Hibernate比较</strong></p>
+<ul>
+<li>Mybaits是半自动，Hibernate是全自动。Hibernate完全可以通过对象关系模型实现对数据库的操作，拥有完整的JavaBean对象与数据库的映射结构来自动生成sql。而Mybatis仅有基本的字段映射，对象数据以及对象实际关系仍然需要通过手写sql来实现和管理。 </li>
+<li>MyBatis可以进行更为细致的SQL优化，可以减少查询字段。</li>
+<li>MyBatis容易掌握，而Hibernate门槛较高。</li>
+<li>Hibernate功能强大，数据库无关性好，O/R映射能力强，需要代码量少，开发速度快。</li>
+</ul>
+<h2 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h2><p>整理本文时参考了以下文章，非常感谢大佬们的分享：</p>
+<ul>
+<li><a href="https://blog.csdn.net/qq_21492635/article/details/72920868" target="_blank" rel="noopener">【Java面试】Mybatis篇</a></li>
+<li><a href="https://blog.csdn.net/chenbo19867758/article/details/78449952" target="_blank" rel="noopener">java面试总结-3 mybatis</a></li>
+<li><a href="https://blog.csdn.net/eaphyy/article/details/71190441" target="_blank" rel="noopener">Mybatis 的常见面试题</a></li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">GitHub</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ORM</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/09/03/Java面试题笔记之Mybatis/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/09/03/Java面试题笔记之Jsp/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java面试题笔记之Jsp</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -234,9 +473,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

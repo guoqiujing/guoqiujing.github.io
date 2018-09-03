@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: GitHub | 的川</title>
+  <title>Java面试题笔记之Spring | 的川</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="等风来不如追风去">
-<meta property="og:type" content="website">
-<meta property="og:title" content="的川">
-<meta property="og:url" content="http://yoursite.com/tags/GitHub/index.html">
+  <meta name="description" content="初出茅庐，Java小白寻求Offer序列">
+<meta name="keywords" content="Java,Spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java面试题笔记之Spring">
+<meta property="og:url" content="http://yoursite.com/2018/09/03/Java面试题笔记之Spring/index.html">
 <meta property="og:site_name" content="的川">
-<meta property="og:description" content="等风来不如追风去">
+<meta property="og:description" content="初出茅庐，Java小白寻求Offer序列">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-03T13:09:37.816Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="的川">
-<meta name="twitter:description" content="等风来不如追风去">
+<meta name="twitter:title" content="Java面试题笔记之Spring">
+<meta name="twitter:description" content="初出茅庐，Java小白寻求Offer序列">
   
     <link rel="alternative" href="/atom.xml" title="的川" type="application/atom+xml">
   
@@ -154,64 +156,291 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Java面试题笔记之Spring" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/03/Hexo-GitHub搭建个人博客记录/" class="archive-article-date">
-  	<time datetime="2018-09-02T16:57:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-03</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/03/Hexo-GitHub搭建个人博客记录/">Hexo-GitHub搭建个人博客记录</a>
+    <h1 class="article-title" itemprop="name">
+      Java面试题笔记之Spring
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/09/03/Java面试题笔记之Spring/" class="archive-article-date">
+  	<time datetime="2018-09-03T02:48:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>初出茅庐，Java小白寻求Offer序列</p>
+<a id="more"></a>    
+<p><strong>Spring是什么？有哪些模块？</strong></p>
+<p>Spring 框架是一个轻量级的 Java 开发框架，为应用开发提供平台。</p>
+<p>Spring主要框架包括7个模块</p>
+<ul>
+<li>spring core，提供bean工厂 IOC </li>
+<li>spring aop，面向切面编程</li>
+<li>spring context，提供了关于UI支持,邮件支持等 </li>
+<li>spring web，提供了web的一些工具类的支持 </li>
+<li>spring mvc，提供了web mvc , webviews , jsp ,pdf ,export </li>
+<li>spring orm，整合Hibernate|mybatis|JDO </li>
+<li>spring dao，jdbc支持 </li>
+</ul>
+<p><strong>选择使用Spring框架的原因（Spring框架为企业级开发带来的好处有哪些）？</strong> </p>
+<p>可以从以下几个方面作答：</p>
+<ul>
+<li>非侵入式：支持基于POJO的编程模式，不强制性的要求实现Spring框架中的接口或继承Spring框架中的类。 - IoC容器：IoC容器帮助应用程序管理对象以及对象之间的依赖关系，对象之间的依赖关系如果发生了改变只需要修改配置文件而不是修改代码，因为代码的修改可能意味着项目的重新构建和完整的回归测试。有了IoC容器，程序员再也不需要自己编写工厂、单例，这一点特别符合Spring的精神”不要重复的发明轮子”。</li>
+<li>AOP（面向切面编程）：将所有的横切关注功能封装到切面（aspect）中，通过配置的方式将横切关注功能动态添加到目标代码上，进一步实现了业务逻辑和系统服务之间的分离。另一方面，有了AOP程序员可以省去很多自己写代理类的工作。</li>
+<li>MVC：Spring的MVC框架是非常优秀的，从各个方面都可以甩Struts 2几条街，为Web表示层提供了更好的解决方案。</li>
+<li>事务管理：Spring以宽广的胸怀接纳多种持久层技术，并且为其提供了声明式的事务管理，在不需要任何一行代码的情况下就能够完成事务管理。</li>
+<li>其他：选择Spring框架的原因还远不止于此，Spring为Java企业级开发提供了一站式选择，你可以在需要的时候使用它的部分和全部，更重要的是，你甚至可以在感觉不到Spring存在的情况下，在你的项目中使用Spring提供的各种优秀的功能。 </li>
+</ul>
+<p><strong>Spring的原理</strong></p>
+<p>Spring的核心是IOC和AOP  。</p>
+<ul>
+<li>IOC是依赖注入和控制反转， 其注入方式可分为set注入、构造器注入、接口注入等等。IOC就是一个容器，负责实例化、定位、配置应用程序中的对象及建立这些对象间的依赖。简单理解就是：JAVA每个业务逻辑处理至少需要两个或者以上的对象协作进行工作，但是每个对象在使用它的合作对象的时候，都需要频繁的new 对象来实现，你就会发现，对象间的耦合度高了。而IOC的思想是：Spring容器来管理这些，对象只需要处理本身业务关系就好了。至于什么是控制反转，就是获得依赖对象的方式反转了。</li>
+<li>AOP呢，面向切面编程，最直接的体现就是Spring事物管理。</li>
+</ul>
+<h2 id="IOC"><a href="#IOC" class="headerlink" title="IOC"></a>IOC</h2><p><strong>IOC是什么？</strong></p>
+<ul>
+<li>Inversion of Control，即“控制反转”，不是什么技术，而是一种设计思想。</li>
+<li>在Java开发中，IOC意味着将你设计好的对象交给容器控制，而不是传统的在你的对象内部直接控制。</li>
+<li>而当你需要的时候，IOC再给你。</li>
+</ul>
+<p><strong>在Web项目中如何获得Spring的IoC容器？</strong> </p>
+<p><strong>Spring IoC容器配置Bean的方式？</strong></p>
+<ul>
+<li>基于XML文件进行配置。</li>
+<li>基于注解进行配置。</li>
+<li>基于Java程序进行配置（Spring 3+）</li>
+</ul>
+<p><strong>阐述Spring框架中Bean的生命周期？</strong></p>
+<ol>
+<li>Spring IoC容器找到关于Bean的定义并实例化该Bean。</li>
+<li>Spring IoC容器对Bean进行依赖注入。<ul>
+<li>如果Bean实现了BeanNameAware接口，则将该Bean的id传给setBeanName方法。</li>
+<li>如果Bean实现了BeanFactoryAware接口，则将BeanFactory对象传给setBeanFactory方法。</li>
+<li>如果Bean实现了BeanPostProcessor接口，则调用其postProcessBeforeInitialization方法。</li>
+<li>如果Bean实现了InitializingBean接口，则调用其afterPropertySet方法。</li>
+</ul>
+</li>
+<li>如果有和Bean关联的BeanPostProcessors对象，则这些对象的postProcessAfterInitialization方法被调用。</li>
+<li>当销毁Bean实例时，如果Bean实现了DisposableBean接口，则调用其destroy方法。</li>
+</ol>
+<p><strong>依赖注入时如何注入集合属性？</strong></p>
+<p>可以在定义Bean属性时，通过<list> / <set> / <map> / <props>分别为其注入列表、集合、映射和键值都是字符串的映射属性。</props></map></set></list></p>
+<p><strong>Spring中的自动装配有哪些限制？</strong></p>
+<ul>
+<li>如果使用了构造器注入或者setter注入，那么将覆盖自动装配的依赖关系。</li>
+<li>基本数据类型的值、字符串字面量、类字面量无法使用自动装配来注入。</li>
+<li><p>优先考虑使用显式的装配来进行更精确的依赖注入而不是使用自动装配。</p>
+<p><strong>Spring中如何使用注解来配置Bean？有哪些相关的注解？</strong></p>
+</li>
+<li><p>首先需要在Spring配置文件中增加如下配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;context:component-scan base-package=&quot;org.example&quot;/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后可以用@Component、@Controller、@Service、@Repository注解来标注需要由Spring IoC容器进行对象托管的类。这几个注解没有本质区别，只不过@Controller通常用于控制器，@Service通常用于业务逻辑类，@Repository通常用于仓储类（例如我们的DAO实现类），普通的类用@Component来标注。</p>
+</li>
+</ul>
+<h2 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h2><p><strong>解释一下什么叫AOP（面向切面编程）？</strong><br>答：AOP（Aspect-Oriented Programming）指一种程序设计范型，该范型以一种称为切面（aspect）的语言构造为基础，切面是一种新的模块化机制，用来描述分散在对象、类或方法中的横切关注点（crosscutting concern）。<br><strong>你是如何理解”横切关注”这个概念的？</strong><br>答：”横切关注”是会影响到整个应用程序的关注功能，它跟正常的业务逻辑是正交的，没有必然的联系，但是几乎所有的业务逻辑都会涉及到这些关注功能。通常，事务、日志、安全性等关注就是应用中的横切关注功能。</p>
+<p><strong>你如何理解AOP中的连接点（Joinpoint）、切点（Pointcut）、增强（Advice）、引介（Introduction）、织入（Weaving）、切面（Aspect）这些概念？</strong></p>
+<ul>
+<li>连接点（Joinpoint）：程序执行的某个特定位置（如：某个方法调用前、调用后，方法抛出异常后）。一个类或一段程序代码拥有一些具有边界性质的特定点，这些代码中的特定点就是连接点。Spring仅支持方法的连接点。</li>
+<li>切点（Pointcut）：如果连接点相当于数据中的记录，那么切点相当于查询条件，一个切点可以匹配多个连接点。Spring AOP的规则解析引擎负责解析切点所设定的查询条件，找到对应的连接点。</li>
+<li><p>增强（Advice）：增强是织入到目标类连接点上的一段程序代码。Spring提供的增强接口都是带方位名的，如：前置增强、后置增强、返回后增强、抛异常时增强和包围型增强。</p>
+</li>
+<li><p>引介（Introduction）：引介是一种特殊的增强，它为类添加一些属性和方法。这样，即使一个业务类原本没有实现某个接口，通过引介功能，可以动态的未该业务类添加接口的实现逻辑，让业务类成为这个接口的实现类。</p>
+</li>
+<li>织入（Weaving）：织入是将增强添加到目标类具体连接点上的过程，AOP有三种织入方式：①编译期织入：需要特殊的Java编译期（例如AspectJ的ajc）；②装载期织入：要求使用特殊的类加载器，在装载类的时候对类进行增强；③运行时织入：在运行时为目标类生成代理实现增强。Spring采用了动态代理的方式实现了运行时织入，而AspectJ采用了编译期织入和装载期织入的方式。</li>
+<li>切面（Aspect）：切面是由切点和增强（引介）组成的，它包括了对横切关注功能的定义，也包括了对连接点的定义。</li>
+</ul>
+<h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h2><p><strong>Spring MVC的工作原理是怎样的？</strong>  </p>
+<ul>
+<li>客户端的所有请求都交给前端控制器DispatcherServlet来处理，它会负责调用系统的其他模块来真正处理用户的请求。 </li>
+<li>DispatcherServlet收到请求后，将根据请求的信息（包括URL、HTTP协议方法、请求头、请求参数、Cookie等）以及HandlerMapping的配置找到处理该请求的Handler（任何一个对象都可以作为请求的Handler）。</li>
+<li>在这个地方Spring会通过HandlerAdapter对该处理器进行封装。HandlerAdapter是一个适配器，它用统一的接口对各种Handler中的方法进行调用。 </li>
+<li>Handler完成对用户请求的处理后，会返回一个ModelAndView对象给DispatcherServlet，ModelAndView顾名思义，包含了数据模型以及相应的视图的信息。 </li>
+<li>ModelAndView的视图是逻辑视图，DispatcherServlet还要借助ViewResolver完成从逻辑视图到真实视图对象的解析工作。</li>
+<li>当得到真正的视图对象后，DispatcherServlet会利用视图对象对模型数据进行渲染。</li>
+<li>客户端得到响应，可能是一个普通的HTML页面，也可以是XML或JSON字符串，还可以是一张图片或者一个PDF文件。 </li>
+</ul>
+<p><strong>SpringMvc和Struts2的区别</strong></p>
+<ul>
+<li><p>区别1：</p>
+<p>Struts2 的核心是基于一个Filter即<strong>StrutsPreparedAndExcuteFilter</strong><br>SpringMvc的核心是基于一个Servlet即<strong>DispatcherServlet</strong>(前端控制器)</p>
+</li>
+<li><p>区别2：</p>
+<p>Struts2是基于<strong>类</strong>开发的，传递的参数是通过类的属性传递(属性驱动和模型驱动)，所以只能设计成多例。prototype</p>
+<p>SpringMvc是基于<strong>类中的方法</strong>开发的，也就是一个url对应一个方法，传递参数是传到方法的形参上面，所以既可以是单例模式也可以是多例模式singiton。</p>
+</li>
+<li><p>区别3：</p>
+<p>Struts2采用的是值栈存储请求以及响应数据，OGNL存取数据</p>
+<p>SpringMvc采用request来解析请求内容，然后由其内部的getParameter给方法中形参赋值，再把后台处理过的数据通过ModelAndView对象存储，Model存储数据，View存储返回的页面，再把对象通过request传输到页面去。</p>
+</li>
+</ul>
+<h2 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h2><p>整理本人时参考了以下文章，非常感谢大佬们的分享：</p>
+<ul>
+<li><a href="https://blog.csdn.net/weixin_38429587/article/details/79050550" target="_blank" rel="noopener">SpringMVC与Struts2的主要区别</a></li>
+<li><a href="https://blog.csdn.net/chenbo19867758/article/details/78439732?locationNum=2&amp;fps=1" target="_blank" rel="noopener">java面试总结1</a></li>
+<li><a href="https://blog.csdn.net/chenbo19867758/article/details/78449988" target="_blank" rel="noopener">java面试总结4 spring</a></li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">GitHub</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/09/03/Java面试题笔记之Spring/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/09/03/Java面试题笔记之Jsp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Java面试题笔记之Jsp
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/09/03/Java面试题笔笔记之数据库/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java面试题笔笔记之数据库</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -234,9 +463,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
