@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="的川">
 <meta property="og:description" content="初出茅庐，Java小白寻求Offer序列">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-03T14:27:31.277Z">
+<meta property="og:updated_time" content="2018-09-11T14:27:11.391Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java面试题笔记之Java基础">
 <meta name="twitter:description" content="初出茅庐，Java小白寻求Offer序列">
@@ -178,10 +178,77 @@
       
         <p>初出茅庐，Java小白寻求Offer序列</p>
 <a id="more"></a>    
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p><strong>Java语言有哪些优点？</strong></p>
+<p>Java为纯面向对象语言，能够直接反应现实生活，使得编写程序更为容易。</p>
+<p>平台无关性</p>
+<p>提供了很多的内置类库，通过使用这些类库，简化了开发人员的程序设计工作，缩短了项目的开发时间。</p>
+<p>提高了对Web应用开发的支持。</p>
+<p>具有较好的安全性和健壮性。</p>
+<p><strong>如何实现在main方法执行前输出“hello world”</strong></p>
+<p>静态块</p>
+<p><strong>java程序初始化的顺序是怎么样</strong></p>
+<p>3个原则：</p>
+<ul>
+<li><p>静态对象（变量）优先于非静态（变量）</p>
+</li>
+<li><p>父类优先于子类进行初始化</p>
+</li>
+<li><p>按照成员变量的定义顺序进行初始化</p>
+</li>
+</ul>
+<p>父类静态变量  父类静态代码块  子类静态变量  子类静态代码块  父类非静态变量  父类非静态代码块  父类构造函数  子类非静态变量  子类非静态代码块  子类构造函数</p>
+<p><strong>什么是构造函数</strong></p>
+<p>一种特殊的函数，用来在对象实例化时初始化对象的成员变量。在Java中，构造函数具有以下几个特点：</p>
+<p>函数名必须和类名相同，并且不能有返回值</p>
+<p>每个类可以有多个构造函数，当开发人员没有提供构造函数时，编译器在把源代码编译成字节码的过程中会提供一个没有参数的默认的构造函数。</p>
+<p>构造函数总是伴随着new操作一起调用，且不能由开发者直接调用，必须由系统调用。在对象实例化之前自动被调用，且只运行一次。</p>
+<p>构造函数可以被重载，不能被继承</p>
+<p>子类可以通过super关键字来显式地调用父类的构造函数。</p>
+<p><strong>为什么Java中有些接口没有任何方法</strong></p>
+<p>标识接口，用来当做一个标识的作用，用来表明实现它的类是属于一个特定的类型。</p>
+<p><strong>Java中clone方法有什么作用</strong></p>
+<p>Java在处理基本数据类型时，采用的是值传递的方式执行，除此之外其他类型都是按照引用类型传递方式执行。对象除了在函数调用时是引用传递，在使用 = 赋值时采用的也是引用传递。</p>
+<p>而在实际编程中，经常会遇到从某个已有的对象A创建出另一个与A具有相同状态的对象B，而对B的修改不会影响到A，这种情况下显然通过简单的赋值操作无法达到目的，而Java提供了一个简单有效的clone方法来满足这个需求。</p>
+<p><strong>什么是反射机制</strong></p>
+<p>反射机制是java语言中非常重要的特性，它允许程序在允许时进行自我检查，同时也允许对其内部的成员进行操作。</p>
+<p>具体来说，反射机制提供的功能有：</p>
+<p>得到一个对象所属的类</p>
+<p>获取一个类的所有成员</p>
+<p>获取一个类的所有成员变量和方法</p>
+<p>在运行时创建对象</p>
+<p>在运行时调用对象的方法</p>
+<p><strong>变量命名规则</strong></p>
+<p>在java语言中，变量名、函数名、数组名统称为标识符。</p>
+<p>java规定，标识符只能由字母、数字、下划线和$符合组成，并且标识符第一个字符不能为数字。</p>
+<p><strong>break、continue、return</strong></p>
+<p>break直接强行跳出当前循环</p>
+<p>continue用于停止当次循环，回到循环起始处</p>
+<p>return语句是一个跳转语句，用来表示从一个方法返回。</p>
+<p><strong>final、finally、finalize有什么区别</strong></p>
+<p>final用于声明属性、方法和类，分别表示属性不可变、方法不可覆盖和类不可继承。</p>
+<p>finally作为异常处理的一部分，只能用在try/catch语句中，并且附带一个语句块，表示这段语句最终一定被执行，经常被用在释放资源的情况下。</p>
+<p>finalize是Object类的一个方法，在垃圾回收器执行会调用被回收对象的finalize方法，可以覆盖此方法来实现对其资源的回收。</p>
+<p><strong>JDK中有哪些类是不可继承的</strong></p>
+<p>不能继承的类是使用了final关键字修饰的类。一般比较基本的类型为了防止扩展类无意间破坏原来方法的实现的类型都应该是final的，比如String、StringBuffer。</p>
+<p><strong>static关键字有哪些作用</strong></p>
+<p>static成员变量：静态变量属于类，在内存中只有一个复制，主要静态变量所在的类被加载，这个静态变量就会被分配空间。</p>
+<p>static成员方法：方法属于类，不需要创建对象就可以使用</p>
+<p>static代码块：静态代码块，在类中独立于成员变量和成员方法的代码块。加载类时会执行static代码块，如果有多个按顺序执行，并且都执行一次。</p>
+<p>static内部类</p>
+<p><strong>使用switch时需要注意哪些事项</strong></p>
+<p>int 或者Integer</p>
+<p>因为 byte、short和char类型可以隐式地转换为int类型，因此这些类型以及他们的包装类都可以作为switch的表达式。</p>
+<p>java7中，switch开始支持String类型了，原理是通过String对象的hashCode方法得到一个int类型的hash值，然后用这个hash值来唯一标识case。</p>
+<p><strong>volatile有什么作用</strong></p>
+<p>在用java语言编写的程序中，为了提供程序的运行效率，编译器会把经常被访问的值存储在缓存中，读取时直接从缓存中读。在多线程编程时，变量的值可能会因为别的线程而改变了，缓存的值不会相应地改变，从而造成了读取的值和实际的值不一致的问题。</p>
+<p>被volatile修饰的变量，程序每次用到它时都会直接从对应的内存中读取，而不会利用缓存，所以使用了volatile修饰成员变量后，所有线程在任何时候看到的变量的值都是相同的。</p>
+<p>volatile不能保证操作的原子性，因此，一般情况下不能代替sychronized。此外，使用volatile会阻止编译器对代码进行优化，会降低程序的执行效率。</p>
+<p><strong>instanceof有什么作用</strong></p>
+<p>是一个二元运算符，判断一个引用类型的变量是否是一个类（或接口、抽象类、父类）的实例。</p>
 <h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p><strong>Java中的基本数据类型有哪些？</strong></p>
 <p>只有8个：byte、short、int、long、float、double、char、boolean。</p>
 <p>除了基本类型（primitive type）和枚举类型（enumeration type），剩下的都是引用类型（reference type）。<br>引用类型有 类class 接口 、interface  、数组array。</p>
-<p><strong>int和Integer有什么区别？ </strong></p>
+<p><strong>int 和 Integer 有什么区别？ </strong></p>
 <p>int是基本数据类型，Integer是int对应的包装类。</p>
 <p>Java是一个近乎纯洁的面向对象编程语言，但是为了编程的方便还是引入了基本数据类型。</p>
 <p> Java 为每个原始类型提供了包装类型：</p>
@@ -192,12 +259,43 @@
 </li>
 </ul>
 <p>从Java 5开始引入了自动装箱/拆箱机制，使得二者可以相互转换。</p>
-<h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><p><strong>面向对象的特征</strong></p>
+<h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><p><strong>什么是面向对象</strong></p>
+<p>面向对象是当今软件开发方法的主流方法之一，它把数据及对数据的操作方法放在一起，作为一个相互依存的整体，即对象。对同类的对象抽象出其共性，即类，类中的大多数数据，只能被本类的方法进行处理。</p>
+<p><strong>什么是面向过程</strong></p>
+<p>一种以事件为中心的开发方法，自顶向下顺序执行，逐步求精，程序结构是按照功能划分为若干个基本模块。</p>
+<p><strong>面向对象的特征</strong></p>
 <ul>
 <li>继承：通过子类可以实现继承，子类继承父类的所有状态和行为，同时添加自身的状态和行为。</li>
 <li>封装：将代码及处理数据绑定在一起的一种编程机制，该机制保证程序和数据不受外部干扰。</li>
 <li>多态：包括重载和重写。</li>
+<li>抽象：忽略一个主题中与当前目标无关的那些方法，以便更充分地注意与当前目标有关的方法。抽象包括两个方面：一是过程抽象，二是数据抽象。</li>
 </ul>
+<p><strong>面向对象开发优点</strong></p>
+<p>较高的开发效率</p>
+<p>保证软件的鲁棒性</p>
+<p>保证软件的高可维护性</p>
+<p><strong>什么是继承</strong></p>
+<p>继承是面向对象中一个非常重要的特性。通过继承，子类可以使用父类的一些成员变量和方法，提高代码的复用性，提高开发效率。</p>
+<p>java中继承主要有以下几个特性</p>
+<p>不支持多继承</p>
+<p>子类只能继承父类的非私有（public和protected）成员变量和方法</p>
+<p>同名的子类成员变量会覆盖父类的成员变量</p>
+<p>相同的函数签名（相同的方法名，相同的参数个数和类型），子类会覆盖父类的方法</p>
+<p><strong>组合和继承有什么区别</strong></p>
+<p>组合是指在新类里面创建原有类的对象，重复利用已有类的功能。</p>
+<p>继承是面向对象的主要特性之一，允许设计人员根据其他类的实现来定义一个类的实现。</p>
+<p>继承关系： is - a关系      组合关系：has - a 关系</p>
+<p>能使用组合就不要使用继承</p>
+<p><strong>重载和覆盖有什么区别</strong></p>
+<p>覆盖是子类和父类之间的关系，重载是同一个类中方法之间的关系</p>
+<p>覆盖只能有一个方法或只能由一对方法产生关系，重载是多个方法之间的关系</p>
+<p>覆盖要求参数列表相同，重载要求参数列表不同</p>
+<p><strong>抽象类和接口有什么异同</strong></p>
+<p><strong>this和super有什么区别</strong></p>
+<p>this用来指向当前实例对象</p>
+<p>super可以用来访问父类的方法和成员变量</p>
+<p><strong>多态实现的机制是什么</strong></p>
+<p>编译时多态和运行时多态，编译时多态是通过方法的重载实现，运行时多态是通过方法的覆盖来实现。</p>
 <p><strong>重装和重写的区别？</strong></p>
 <ul>
 <li>重载为编译时多态，重写是运行时多态。</li>
@@ -209,12 +307,6 @@
 <p>hashCode的作用是为任何对象生成一个哈希码，逻辑上相同的对象生成相同的哈希码。在Java中内置求出的哈希码是基于存储地址的一个映射关系，保证对象的哈希码的一一对应关系。</p>
 <p>在JVM中，要插入一个对象，必须先比较对象的哈希码，如果相同，再比较equal方法是否为true，如果为true表明已经存在该对象，不插入。如果不为true则按照哈希冲突的原则插入到其他地方。</p>
 <p>所以如果重写了equals方法不重写hashCode方法，那么hashCode不相等就没机会比较equals方法（也就是没效果）</p>
-<p><strong>序列化的原理和作用</strong></p>
-<ul>
-<li>序列化是将数据结构或对象转换成二进制串的过程，简单点说序列化就是就是将数据分解成字节流，以便存储在文件中或在网络上传输的过程。</li>
-<li>反序列化就是打开字节流并重构对象。</li>
-<li>Java中实现序列化只要让类实现 Serializable 接口即可。</li>
-</ul>
 <p><strong>抽象类和接口的区别，有哪些使用场景呢？</strong></p>
 <ul>
 <li>抽象类可以有自己的数据成员，也可以有非抽象的成员方法。接口中只能有静态的不能修改的数据成员（static final），只能有抽象的成员方法。</li>
@@ -229,7 +321,7 @@
 </ul>
 <p><strong>获得一个类的类对象有哪些方式？</strong></p>
 <ul>
-<li>类型.class，例如：String.class</li>
+<li>类型.Class，例如：String.Class</li>
 <li>对象.getClass()，例如：”hello”.getClass()</li>
 <li>Class.forName()，例如：Class.forName(“java.lang.String”)</li>
 </ul>
@@ -296,6 +388,15 @@
 <li>字节流继承于InputStream、OutputStream，字符流继承于Reader、Writer。</li>
 </ul>
 <p>在java.io 包中还有许多其他的流，主要是为了提高性能和使用方便。关于Java的I/O需要注意的有两点：一是两种对称性（输入和输出的对称性，字节和字符的对称性）；二是两种设计模式（适配器模式和装潢模式）。另外Java中的流不同于C#的是它只有一个维度一个方向。 </p>
+<p><strong>序列化的原理和作用</strong></p>
+<ul>
+<li>序列化是将数据结构或对象转换成二进制串的过程，简单点说序列化就是就是将数据分解成字节流，以便存储在文件中或在网络上传输的过程。</li>
+<li>反序列化就是打开字节流并重构对象。</li>
+<li>Java中实现序列化只要让类实现 Serializable 接口即可。</li>
+</ul>
+<p><strong>序列化的特点</strong></p>
+<p>如果一个类能被序列化，那么它的子类也能够被序列化</p>
+<p>由于static（静态）代表类的成员，transient（Java语言关键字，如果用transient声明一个实例变量，当对象存储时，它的值不需要维持。）代表对象的临时数据，因此被声明为这两种类型的数据成员不被序列化。</p>
 <h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p><strong>java error和exception的区别，RuntimeException和非RuntimeException的区别</strong></p>
 <ul>
 <li><p>Error（错误）表示系统级的错误和程序不必处理的异常，是java运行环境中的内部错误或者硬件问题。比如：内存资源不足等。对于这种错误，程序基本无能为力，除了退出运行外别无选择，它是由Java虚拟机抛出的。</p>
@@ -324,7 +425,7 @@
 <li>finalize：Object类中定义的方法，Java中允许使用finalize()方法在垃圾收集器将对象从内存中清除出去之前做必要的清理工作。这个方法是由垃圾收集器在销毁对象时调用的，通过重写finalize()方法可以整理系统资源或者执行其他清理工作。 </li>
 </ul>
 <h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p><strong>Java线程的5种状态及切换(透彻讲解)</strong></p>
-<p>新建(NEW)</p>
+<p>新建(NEW)：</p>
 <p>可运行(RUNNABLE)</p>
 <p>运行(RUNNING)</p>
 <p>阻塞(BLOCKED)</p>
@@ -376,10 +477,15 @@
 <p>Lock 能完成synchronized所实现的所有功能；</p>
 </li>
 <li><p>主要不同点：</p>
+<p>用法不一样：synchronized既可以加在方法上，也可以加载特定的代码块中，括号中表示需要锁的对象。而lock需要显式地指定起始位置和终止位置。</p>
+<p>性能不一样：在竞争不是很激烈的情况下，synchronized的性能比较好，在竞争很激烈的情况下，synchronized的性能会下降地非常快，而lock基本保持不变。</p>
 <p>Lock有比synchronized更精确的线程语义和更好的性能，而且不强制性的要求一定要获得锁。</p>
-<p>synchronized会自动释放锁，而Lock一定要求程序员手工释放，并且最好在finally 块中释放（这是释放外部资源的最好的地方）。</p>
+<p>锁机制不一样：synchronized会自动释放锁，而Lock一定要求程序员手工释放，并且最好在finally 块中释放（这是释放外部资源的最好的地方）。</p>
 </li>
 </ul>
+<p><strong>什么是守护线程</strong></p>
+<p>java提供了两种线程：守护线程和用户线程。</p>
+<p>守护线程是指</p>
 <h2 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h2><p><strong>阐述JDBC操作数据库的步骤。</strong></p>
 <p>1.加载驱动。</p>
 <p>2.创建连接。</p>
@@ -416,6 +522,39 @@
 <li>Blob是指二进制大对象（Binary Large Object），而Clob是指大字符对象（Character Large Objec），因此其中Blob是为存储大的二进制数据而设计的，而Clob是为存储大的文本数据而设计的。</li>
 <li>JDBC的PreparedStatement和ResultSet都提供了相应的方法来支持Blob和Clob操作。</li>
 </ul>
+<h2 id="Java平台和内存管理"><a href="#Java平台和内存管理" class="headerlink" title="Java平台和内存管理"></a>Java平台和内存管理</h2><p>为什么说java是平台独立性语言？</p>
+<p>平台的独立性是指可以在一个平台上编写和编译程序，而在其他平台上运行。保证Java具有平台独立性的机制为“中间码”和“Java虚拟机”。</p>
+<p>Java编译后生成“中间码”，不同的硬件平台都会安装有不同的JVM，由JVM来负责把“中间码”翻译为硬件平台能执行的代码。</p>
+<p>“中间码”也称字节码</p>
+<p><strong>JVM加载class文件的原理机制是什么</strong></p>
+<p>java是一种动态的解释型语言，类只有加载到JVM中才能运行。</p>
+<p>当运行指定程序时，JVM会将编译生成的.class文件按照需求和一定的规则加载到内存中，并组织成一个完整的Java应用程序。这个加载过程由类加载器来完成，具体来说就是由ClassLoader和他的子类来实现的。类加载器本身也是一个类，实质是把类文件从硬盘读取到内存中。</p>
+<p>类的加载方式分为隐式加载和显式加载。前者通过new等方式创建对象时加载对应的类到JVM中，后者通过class.forName方法来把所需的类加载到JVM中。</p>
+<p>类的加载是动态的，不会一次性将所有类全部加载后再运行，而是先加载保证程序运行的基础类。其他类会在需要的时候再加载。</p>
+<p>java中将类分为三种，系统类，扩展类和自定义类。Java针对这三种不同的类提供了三种类型的加载器。</p>
+<p>Bootstrap Loader 负责加载系统类（jre/lib/rt.jar的类）</p>
+<p>​        ExtClassLoader 负载加载扩展类（jar/lib/ext/*.jar的类）</p>
+<p>​            AppClassLoader 负责加载应用类（classpath指定目录或jar中的类）</p>
+<p><strong>什么是GC</strong></p>
+<p>垃圾回收的意思。主要作用是回收程序中不再使用的内存。</p>
+<p>主要负责3项任务：分配内存，确保被引用的对象不被错误地回收、回收不再被引用的对象的内存空间。</p>
+<p>对对象而言，如果没有任何变量去引用它，那么该对象将不可能被程序访问，因此可以认为是垃圾信息，可以被回收。</p>
+<p>对垃圾回收器来说，它使用有向图来记录和管理内存中的所有对象，通过这个有向图就可以识别哪些对象是可达的（有引用变量引用它就是可达的）哪些对象是不可达的，所有不可达的对象就会被垃圾回收。</p>
+<p><strong>常用的垃圾回收算法</strong></p>
+<p><strong>java是否存在内存泄漏问题</strong></p>
+<p>内存泄漏是指一个不再被程序使用的对象或者变量还在内存中占有存储空间。</p>
+<p>在Java中判断一个内存空间是否符合垃圾回收的标准有两个：</p>
+<p>给对象赋予了null，以后没有使用过。</p>
+<p>给对象赋予了新值，重新分配了内存空间。</p>
+<p>一般来讲，内存泄漏主要有两种情况：一是在堆中申请的空间没有被释放，而是对象已经不在被使用，但仍然在内存中留着。垃圾回收机制的引入可以在有效地解决第一件情况；而对于第二种情况，垃圾回收机制则无法保证不再使用的对象会被释放。因此，Java语言中的内存泄漏主要指第二种情况。</p>
+<p>在Java语言中，容易引起内存泄漏的原因很多，主要有以下几个方法：</p>
+<p>静态集合类、各种连接、监听器、变量不合理的作用域</p>
+<p><strong>Java中堆和栈有什么区别</strong></p>
+<p>在Java语言，堆和栈都是内存存放数据的地方。基本数据类型的变量和对象的引用变量，都分配在栈上。</p>
+<p>引用类型的变量，其内存分配在堆上或者常量池（例如字符串常量和基本数据类型常量）中，通过new等方式创建。</p>
+<p>具体而言，栈内存主要存放基本数据类型变量和引用变量。栈内存的管理是通过压栈和弹栈来完成，以栈帧为基本单位来管理程序的调用关系。</p>
+<p>堆内存用来存放运行时创建的对象。JVM是基于堆栈的虚拟机，每个Java程序都运行在一个单独的JVM中，都对应一个堆内存，因此在多线程情况下，线程之间共享堆内存，所以多线程在访问堆中数据时需要进行同步。</p>
+<p>在Java中，堆内存的垃圾回收由垃圾回收器自动回收。</p>
 <h2 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h2><p>整理本文时参考了以下文章，非常感谢大佬们的分享：</p>
 <ul>
 <li><a href="https://blog.csdn.net/chenbo19867758/article/details/78439732?locationNum=2&amp;fps=1" target="_blank" rel="noopener">java面试总结-1</a></li>
@@ -685,15 +824,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ORM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Mybatis，面试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ORM</a>
               </li>
              
               <li class="article-tag-list-item">
