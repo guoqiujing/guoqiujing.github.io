@@ -87,7 +87,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/09/03/Hexo-GitHub搭建个人博客记录/pasted-1.png">
 <meta property="og:image" content="http://yoursite.com/2018/09/03/Hexo-GitHub搭建个人博客记录/pasted-2.png">
-<meta property="og:updated_time" content="2018-09-03T09:12:17.067Z">
+<meta property="og:updated_time" content="2018-09-12T13:43:22.364Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo-GitHub搭建个人博客记录">
 <meta name="twitter:description" content="终于搭好了自己的个人博客系统。想了想第一篇博客必须得分享该过程啊，于是乎，开始动笔。首先利用的是GitHub和Hexo,关于这两个工具百度一大把，搭建过程发生问题比较好解决。">
@@ -322,13 +322,16 @@
 
       
         <p>终于搭好了自己的个人博客系统。<br>想了想第一篇博客必须得分享该过程啊，于是乎，开始动笔。<br>首先利用的是GitHub和Hexo,关于这两个工具百度一大把，搭建过程发生问题比较好解决。<br><a id="more"></a>    </p>
-<h2 id="准备GitHub"><a href="#准备GitHub" class="headerlink" title="准备GitHub"></a>准备GitHub</h2><ol>
+<p>##准备GitHub</p>
+<ol>
 <li>第一步是注册个GitHub账号。</li>
-<li><p>第二步是创建个仓库。<br>这里是有讲究的，仓库名必须是你的用户名.github.io的仓库。比如说，如果你的github用户名是test，那么你就新建test.github.io的仓库（必须是你的用户名，其它名称无效），将来你的网站访问地址就是 <a href="http://test.github.io" target="_blank" rel="noopener">http://test.github.io</a> 了。</p>
-<h2 id="本地安装配置Git"><a href="#本地安装配置Git" class="headerlink" title="本地安装配置Git"></a>本地安装配置Git</h2></li>
+<li>第二步是创建个仓库。<br>这里是有讲究的，仓库名必须是你的用户名.github.io的仓库。比如说，如果你的github用户名是test，那么你就新建test.github.io的仓库（必须是你的用户名，其它名称无效），将来你的网站访问地址就是 <a href="http://test.github.io" target="_blank" rel="noopener">http://test.github.io</a> 了。</li>
 </ol>
+<p>##本地安装配置Git  </p>
 <p>git官网(<a href="http://git-scm.com" target="_blank" rel="noopener">http://git-scm.com</a>)</p>
-<h2 id="本地安装Node-js"><a href="#本地安装Node-js" class="headerlink" title="本地安装Node.js"></a>本地安装Node.js</h2><h2 id="使用Hexo"><a href="#使用Hexo" class="headerlink" title="使用Hexo"></a>使用Hexo</h2><ol>
+<p>##本地安装Node.js  </p>
+<p>##使用Hexo  </p>
+<ol>
 <li><p>安装Hexo </p>
 <p>打开GitBash，输入下面命令安装Hexo</p>
 </li>
@@ -358,7 +361,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd /f/Workspaces/hexo/</span><br><span class="line">$ git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</span><br></pre></td></tr></table></figure>
 <p>​    修改 _config.yml中 的theme: landscape 改为 theme: yilia，然后重新执行 hexo g 来重新生成。</p>
 <pre><code>如果出现一些莫名其妙的问题，可以先执行 hexo clean 来清理一下 public 的内容，然后再来重新生成和发布。
-</code></pre><h2 id="上传到Github"><a href="#上传到Github" class="headerlink" title="上传到Github"></a>上传到Github</h2><ol>
+</code></pre><p>##上传到Github  </p>
+<ol>
 <li>配置_config.yml</li>
 </ol>
 <p>打开_config.yml，修改有关deploy的部分</p>
@@ -371,13 +375,14 @@
 <li>提交到Github</li>
 </ol>
 <p>输入hexo d就会将本次有改动的代码全部提交，没有改动的不会。</p>
-<h2 id="写博客"><a href="#写博客" class="headerlink" title="写博客"></a>写博客</h2><p>定位到我们的hexo根目录，执行命令：</p>
+<p>##写博客  </p>
+<p>定位到我们的hexo根目录，执行命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &apos;my-first-blog&apos;</span><br></pre></td></tr></table></figure>
 <p>hexo会帮我们在_posts下生成相关md文件，我们只需要打开这个文件就可以开始写博客了。当然我们也可以直接自己新建md文件，用这个命令的好处是帮我们自动生成了时间。</p>
 <p>一般完整格式如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: postName #文章页面上的显示名称，一般是中文</span><br><span class="line">date: 2013-12-02 15:30:16 #文章生成时间，一般不改，当然也可以任意修改</span><br><span class="line">categories: 默认分类 #分类</span><br><span class="line">tags: [tag1,tag2,tag3] #文章标签，可空，多标签请用格式，注意:后面有个空格</span><br><span class="line">description: 附加一段文章摘要，字数最好在140字以内，会出现在meta的description里面</span><br><span class="line">---</span><br><span class="line">以下是正文</span><br></pre></td></tr></table></figure>
 <p>如何让博文列表不显示全部内容？<br>默认情况下，生成的博文目录会显示全部的文章内容，如何设置文章摘要的长度呢？</p>
-<p>答案是在合适的位置加上<!--more-->即可。</p>
+<p>答案是在合适的位置加上 <code>&lt;!--more--&gt;</code> 即可。</p>
 <p>好啦，到现在基本就完工了。</p>
 <h2 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h2><p>搭建过程参考了以下博客，非常感谢博主的分享。  </p>
 <ul>
@@ -504,7 +509,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -566,7 +571,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备GitHub"><span class="nav-number">1.</span> <span class="nav-text">准备GitHub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地安装配置Git"><span class="nav-number">2.</span> <span class="nav-text">本地安装配置Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地安装Node-js"><span class="nav-number">3.</span> <span class="nav-text">本地安装Node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Hexo"><span class="nav-number">4.</span> <span class="nav-text">使用Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上传到Github"><span class="nav-number">5.</span> <span class="nav-text">上传到Github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写博客"><span class="nav-number">6.</span> <span class="nav-text">写博客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#感谢"><span class="nav-number">7.</span> <span class="nav-text">感谢</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#感谢"><span class="nav-number">1.</span> <span class="nav-text">感谢</span></a></li></ol></div>
             
 
           </div>
@@ -590,7 +595,7 @@
   <span class="with-love">
     <i class="fa fa-snowflake-o"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">的川</span>
+  <span class="author" itemprop="copyrightHolder">爱编程的川 <a target="_blank" href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action;jsessionid=XRzOgKXiavVxBJm97WuliePe9dtA-iMbwiLk0vDrGAJO2wJZcuLH!-736616813" rel="nofollow">粤ICP备18008413号-2</a></span>
 
   
 </div>
