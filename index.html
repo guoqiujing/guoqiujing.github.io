@@ -320,16 +320,14 @@
 
       
         
-          
-            <a id="more"></a>
-<p>在高并发下,多线程同时查询同一个资源,如果缓存中没有这个资源,那么这些线程都会去数据库查找,对数据库造成极大压力,缓存失去存在的意义。</p>
-<p><strong>当查询的时候，先从Redis集群中取，如果没有，那么再从DB中查询并设置到Redis集群中。</strong></p>
-<p><strong>假设从DB中查询需要2S，那么显然这段时间内过来的请求，在上述的代码下，会全部走DB查询，相当于缓存被直接穿透，这样的现象就称之为“缓存击穿”！</strong></p>
-<p>解决办法：</p>
-<p>通过synchronized + 双重检查机制：</p>
-<p><strong>在同步块中，继续判断检查，保证不存在，才去查DB。</strong></p>
-
-          
+          <p>在高并发下,多线程同时查询同一个资源,如果缓存中没有这个资源,那么这些线程都会去数据库查找,对数据库造成极大压力,缓存失去存在的意义。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/20/缓存击穿/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -446,9 +444,15 @@
 
       
         
-          
-            <a id="more"></a>
-          
+          <p>为什么要用缓存？</p>
+<p>如果缓存中有数据就不用从数据库中获取，大大提高系统性能。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/20/mybatis缓存机制/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -565,180 +569,14 @@
 
       
         
-          
-            <a id="more"></a>
-<h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><p>简单查询的三种情况</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select id from user</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select id , real_name from user</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user</span><br></pre></td></tr></table></figure>
-<p>利用distinct关键字去重（查询不同的行，比如id一样的出现多次只取一个）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select distinct id from user</span><br></pre></td></tr></table></figure>
-<p>限制结果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user limit 1,100</span><br></pre></td></tr></table></figure>
-<p>第一个参数代表偏移量（从0开始，比如上面的1已经代表的是第二条数据了），第二个代表条数。</p>
-<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select real_name from user order by id</span><br></pre></td></tr></table></figure>
-<p>默认是升序排序（从小到到，从a到z)</p>
-<p>其实上面也等于 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select real_name from user order by id asc</span><br></pre></td></tr></table></figure>
-<h4 id="降序排序"><a href="#降序排序" class="headerlink" title="降序排序"></a>降序排序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select real_name from user order by id desc</span><br></pre></td></tr></table></figure>
-<p>desc代表使用降序排序</p>
-<h4 id="按多个列排序"><a href="#按多个列排序" class="headerlink" title="按多个列排序"></a>按多个列排序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user order by real_name ,id</span><br></pre></td></tr></table></figure>
-<p>先按第一个排序，如果第一参数一样，再按第二个参数来排序</p>
-<h4 id="小扩展：如何寻找一个列中的最高值或者最低值"><a href="#小扩展：如何寻找一个列中的最高值或者最低值" class="headerlink" title="小扩展：如何寻找一个列中的最高值或者最低值"></a>小扩展：如何寻找一个列中的最高值或者最低值</h4><p>如下查询了手机号码最小的数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user order by phone limit 1</span><br></pre></td></tr></table></figure>
-<h3 id="where条件查询"><a href="#where条件查询" class="headerlink" title="where条件查询"></a>where条件查询</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where id = 1001</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where id &gt; 1001</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where id &gt;= 1001</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where id &lt; 1001</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where id &lt;= 1001</span><br></pre></td></tr></table></figure>
-<h4 id="不等于"><a href="#不等于" class="headerlink" title="不等于"></a>不等于</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where id &lt;&gt; 1001</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where id != 1001</span><br></pre></td></tr></table></figure>
-<p>1001-1003范围内的数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where id between 1001 and 1003</span><br></pre></td></tr></table></figure>
-<h4 id="空值检查"><a href="#空值检查" class="headerlink" title="空值检查"></a>空值检查</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where nick_name is null</span><br></pre></td></tr></table></figure>
-<h4 id="and"><a href="#and" class="headerlink" title="and"></a>and</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where real_name = &apos;郭秋景&apos; and gender = 1</span><br></pre></td></tr></table></figure>
-<h4 id="or"><a href="#or" class="headerlink" title="or"></a>or</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where real_name = &apos;郭秋景&apos; or id = 1200</span><br></pre></td></tr></table></figure>
-<h4 id="in"><a href="#in" class="headerlink" title="in"></a>in</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where  id in (1002,1003)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select * from user where  id </span><br><span class="line">in (</span><br><span class="line">	select entry.user_id from entry</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h4 id="not"><a href="#not" class="headerlink" title="not"></a>not</h4><p>where 字句中的not操作符有且只有一个功能，就是否定它之后所跟的条件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where id not in (1002,1003)</span><br></pre></td></tr></table></figure>
-<h3 id="like匹配查询"><a href="#like匹配查询" class="headerlink" title="like匹配查询"></a>like匹配查询</h3><p>通配符</p>
-<p>%表示任何字符出现任意次数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where id like &apos;11%&apos;</span><br></pre></td></tr></table></figure>
-<p>11后面不管有多少位，都要</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where id like &apos;11_&apos;</span><br></pre></td></tr></table></figure>
-<p>11后面只能有一位，多位不要！</p>
-<p><strong>尾空格问题：尾空格会干扰通配符，假设保存词11时，如果它后面有一个或多个空格，则字句where id like ‘%11’ 将不会匹配他们，因为在最后的1后有多余的字符。</strong></p>
-<p><strong>解决方法：搜索条件最后附加一个%；保存时候去掉首尾空格。</strong></p>
-<p>NULL不能匹配。</p>
-<h3 id="concat拼接"><a href="#concat拼接" class="headerlink" title="concat拼接"></a>concat拼接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select concat(id,&apos;-&apos;,real_name) from user where id =1000</span><br></pre></td></tr></table></figure>
-<p>使用别名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select concat(id,&apos;-&apos;,real_name) as code from user where id =1000</span><br></pre></td></tr></table></figure>
-<h3 id="算术运算"><a href="#算术运算" class="headerlink" title="算术运算"></a>算术运算</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select prod_id , quantity , item_price , quantity * item_price </span><br><span class="line"></span><br><span class="line">as expanded_price from orderitems where order_num = 20005</span><br></pre></td></tr></table></figure>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="文本处理函数"><a href="#文本处理函数" class="headerlink" title="文本处理函数"></a>文本处理函数</h3><p>trim，rtrim，ltrim</p>
-<p>upper：将文本转换为大写</p>
-<h3 id="日期和时间处理函数"><a href="#日期和时间处理函数" class="headerlink" title="日期和时间处理函数"></a>日期和时间处理函数</h3><p><img src="/2018/09/13/mysql入门/001.png" alt="001"></p>
-<p>看到这么多好的函数，就直接用了一个过来查询试试啦。</p>
-<p>下面这个是查询创建时间已经超过7天的数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT id,open_id,create_time ,DATEDIFF(NOW(),create_time) as out_time  from wechat_form where DATEDIFF(NOW(),create_time) &gt;=7</span><br></pre></td></tr></table></figure>
-<p>下面这个是删除超过30天的数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete   from wechat_form where DATEDIFF(NOW(),create_time) &gt;=30</span><br></pre></td></tr></table></figure>
-<p>删库跑路了。。。</p>
-<h3 id="数值处理函数"><a href="#数值处理函数" class="headerlink" title="数值处理函数"></a>数值处理函数</h3><p><img src="/2018/09/13/mysql入门/002.png" alt="002"></p>
-<h3 id="聚集函数"><a href="#聚集函数" class="headerlink" title="聚集函数"></a>聚集函数</h3><p><img src="/2018/09/13/mysql入门/003.png" alt="003"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select avg(prod_price) as avg_price from products</span><br></pre></td></tr></table></figure>
-<p>count()函数进行计数，可利用 count() 确定表中行的数目或符合特定条件的行的数目。</p>
-<p>count(*)：对表中行的数目进行计数，不管表列中包含的是空值还是非空值。</p>
-<p>count(column)：对特定列中具有值的行进行计数，不包括空值。</p>
-<p>max()函数返回指定列中的最大值。max()要求指定列名。</p>
-<p>min()函数返回指定列中的最小值。min()要求指定列名。</p>
-<p>sum()函数用来返回指定列值的和（总计)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select sum(quantity) as items_ordered from orderitems where order_num = 20005</span><br></pre></td></tr></table></figure>
-<p>sum()函数也支持算术运算</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select sum(quantity * items_price) as total_price from orderitems where order_num = 2005</span><br></pre></td></tr></table></figure>
-<h2 id="分组数据"><a href="#分组数据" class="headerlink" title="分组数据"></a>分组数据</h2><p>group by</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select activity_id , count(*) from entry group by activity_id</span><br></pre></td></tr></table></figure>
-<h2 id="联结"><a href="#联结" class="headerlink" title="联结"></a>联结</h2><h3 id="inner-join"><a href="#inner-join" class="headerlink" title="inner join"></a>inner join</h3><p><img src="/2018/09/13/mysql入门/004.png" alt="004"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select a.* from activity as a inner join entry as e on a.id = e.activity_id</span><br></pre></td></tr></table></figure>
-<p>inner 也可以省略</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select a.* from activity as a join entry as e on a.id = e.activity_id</span><br></pre></td></tr></table></figure>
-<p>等价于 where</p>
-<h3 id="left-join"><a href="#left-join" class="headerlink" title="left join"></a>left join</h3><p>左连结：会读取左边数据表的所有选取的字段数据，即便在右侧表无对应数据。 </p>
-<p><img src="/2018/09/13/mysql入门/005.png" alt="005"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select a.* from activity as a left join entry as e on a.id = e.activity_id</span><br></pre></td></tr></table></figure>
-<h3 id="right-join"><a href="#right-join" class="headerlink" title="right join"></a>right join</h3><p>右连结：会读取右边数据表的全部数据，即便左边边表无对应数据。 </p>
-<p><img src="/2018/09/13/mysql入门/006.png" alt="006"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select a.* from activity as a right join entry as e on a.id = e.activity_id</span><br></pre></td></tr></table></figure>
-<h2 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h2><p>更新一个字段</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update user set nick_name = &apos;123456&apos;  where id = 1000</span><br></pre></td></tr></table></figure>
-<p>更新多个字段</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update user set nick_name = &apos;123456&apos; , gender = 1 where id = 1000</span><br></pre></td></tr></table></figure>
-<h2 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h2><p>按条件删除</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from user where id = 1000</span><br></pre></td></tr></table></figure>
-<p>删除所有</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from user</span><br></pre></td></tr></table></figure>
-<p>注意：删除语句没有*</p>
-<h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><h3 id="插入完整的行"><a href="#插入完整的行" class="headerlink" title="插入完整的行"></a>插入完整的行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into user values(1001,&apos;郭秋景&apos;,&apos;18&apos;)</span><br></pre></td></tr></table></figure>
-<p>对每个列必须提供一个值，如果没有值，应该使用NULL</p>
-<h3 id="插入行的一部分"><a href="#插入行的一部分" class="headerlink" title="插入行的一部分"></a>插入行的一部分</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into user (id,name,age) values(1001,&apos;郭秋景&apos;,18)</span><br></pre></td></tr></table></figure>
-<p>表名后的括号里明确指出了列名，在插入行时，mysql将values列表中的相应值填入列表中的对应项。</p>
-<p>优点：即使表结构发生改变，依然可以工作。</p>
-<h3 id="插入多行"><a href="#插入多行" class="headerlink" title="插入多行"></a>插入多行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into user (id,name,age) values(1001,&apos;郭秋景&apos;,18),values(1002,&apos;帝创&apos;,18)</span><br></pre></td></tr></table></figure>
-<p>每组值用括号括起来，用逗号分隔</p>
-<h3 id="插入某些查询的结果"><a href="#插入某些查询的结果" class="headerlink" title="插入某些查询的结果"></a>插入某些查询的结果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into resource (name,url) select name,url from resource</span><br></pre></td></tr></table></figure>
-<h2 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h2><h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><h4 id="按照锁的粒度分类"><a href="#按照锁的粒度分类" class="headerlink" title="按照锁的粒度分类"></a>按照锁的粒度分类</h4><p><strong>Mysql为了解决并发、数据安全的问题，使用了锁机制。</strong></p>
-<p><strong>可以按照锁的粒度把数据库锁分为表级锁和行级锁。</strong></p>
-<ul>
-<li><p><strong>表级锁</strong></p>
-<p>Mysql中锁定 <strong>粒度最大</strong> 的一种锁，对当前操作的整张表加锁，实现简单 <strong>，资源消耗也比较少，加锁快，不会出现死锁</strong> 。其锁定粒度最大，触发锁冲突的概率最高，并发度最低，MyISAM和 InnoDB引擎都支持表级锁。</p>
-</li>
-<li><p><strong>行级锁</strong></p>
-<p>Mysql中锁定 <strong>粒度最小</strong> 的一种锁，只针对当前操作的行进行加锁。 <strong>行级锁能大大减少数据库操作的冲突。其加锁粒度最小，并发度高，但加锁的开销也最大，加锁慢，会出现死锁。</strong> InnoDB支持的行级锁，包括如下几种。</p>
-<ul>
-<li><strong>Record Lock:</strong> 对索引项加锁，锁定符合条件的行。其他事务不能修改和删除加锁项；</li>
-<li><strong>Gap Lock:</strong> 对索引项之间的“间隙”加锁，锁定记录的范围（对第一条记录前的间隙或最后一条将记录后的间隙加锁），不包含索引项本身。其他事务不能在锁范围内插入数据，这样就防止了别的事务新增幻影行。</li>
-<li><strong>Next-key Lock：</strong> 锁定索引项本身和索引范围。即Record Lock和Gap Lock的结合。可解决幻读问题。</li>
-</ul>
-</li>
-</ul>
-<p><strong>虽然使用行级索具有粒度小、并发度高等特点，但是表级锁有时候也是非常必要的</strong>：</p>
-<ul>
-<li>事务更新大表中的大部分数据直接使用表级锁效率更高；</li>
-<li>事务比较复杂，使用行级索很可能引起死锁导致回滚。</li>
-</ul>
-<h4 id="按照是否可写分类"><a href="#按照是否可写分类" class="headerlink" title="按照是否可写分类"></a>按照是否可写分类</h4><p><strong>表级锁和行级锁可以进一步划分为共享锁（s）和排他锁（X）。</strong></p>
-<ul>
-<li><p><strong>共享锁（s）</strong></p>
-<p><strong>共享锁（Share Locks，简记为S）又被称为读锁</strong>，其他用户可以并发读取数据，但任何事务都不能获取数据上的排他锁，直到已释放所有共享锁。</p>
-<p>共享锁(S锁)又称为读锁，若事务T对数据对象A加上S锁，则事务T只能读A；其他事务只能再对A加S锁，而不能加X锁，直到T释放A上的S锁。这就保证了其他事务可以读A，但在T释放A上的S锁之前不能对A做任何修改。</p>
-</li>
-<li><p><strong>排他锁（X）：</strong></p>
-<p><strong>排它锁（(Exclusive lock,简记为X锁)）又称为写锁</strong>，若事务T对数据对象A加上X锁，则只允许T读取和修改A，其它任何事务都不能再对A加任何类型的锁，直到T释放A上的锁。它防止任何其它事务获取资源上的锁，直到在事务的末尾将资源上的原始锁释放为止。在更新操作(INSERT、UPDATE 或 DELETE)过程中始终应用排它锁。</p>
-</li>
-</ul>
-<p><strong>两者之间的区别：</strong></p>
-<ol>
-<li>共享锁（S锁）：如果事务T对数据A加上共享锁后，则其他事务只能对A再加共享锁，不 能加排他锁。获取共享锁的事务只能读数据，不能修改数据。</li>
-<li>排他锁（X锁）：如果事务T对数据A加上排他锁后，则其他事务不能再对A加任任何类型的封锁。获取排他锁的事务既能读数据，又能修改数据。</li>
-</ol>
-<h4 id="另外两个表级锁：IS和IX"><a href="#另外两个表级锁：IS和IX" class="headerlink" title="另外两个表级锁：IS和IX"></a>另外两个表级锁：IS和IX</h4><p>当一个事务需要给自己需要的某个资源加锁的时候，如果遇到一个共享锁正锁定着自己需要的资源的时候，自己可以再加一个共享锁，不过不能加排他锁。但是，如果遇到自己需要锁定的资源已经被一个排他锁占有之后，则只能等待该锁定释放资源之后自己才能获取锁定资源并添加自己的锁定。而<strong>意向锁的作用就是当一个事务在需要获取资源锁定的时候，如果遇到自己需要的资源已经被排他锁占用的时候，该事务可以需要锁定行的表上面添加一个合适的意向锁。如果自己需要一个共享锁，那么就在表上面添加一个意向共享锁。而如果自己需要的是某行（或者某些行）上面添加一个排他锁的话，则先在表上面添加一个意向排他锁。意向共享锁可以同时并存多个，但是意向排他锁同时只能有一个存在。</strong></p>
-<p><strong>InnoDB另外的两个表级锁：</strong></p>
-<ul>
-<li><strong>意向共享锁（IS）：</strong> 表示事务准备给数据行记入共享锁，事务在一个数据行加共享锁前必须先取得该表的IS锁。</li>
-<li><strong>意向排他锁（IX）：</strong> 表示事务准备给数据行加入排他锁，事务在一个数据行加排他锁前必须先取得该表的IX锁。</li>
-</ul>
-<p><strong>注意：</strong></p>
-<ol>
-<li><strong>这里的意向锁是表级锁，表示的是一种意向，仅仅表示事务正在读或写某一行记录，在真正加行锁时才会判断是否冲突。意向锁是InnoDB自动加的，不需要用户干预。</strong></li>
-<li><strong>IX，IS是表级锁，不会和行级的X，S锁发生冲突，只会和表级的X，S发生冲突。</strong></li>
-</ol>
-<p><strong>InnoDB的锁机制兼容情况如下：</strong><br><img src="https://user-gold-cdn.xitu.io/2018/6/7/163da3105cb54186?w=672&amp;h=159&amp;f=png&amp;s=8700" alt="InnoDB的锁机制兼容情况"></p>
-<p><strong>当一个事务请求的锁模式与当前的锁兼容，InnoDB就将请求的锁授予该事务；反之如果请求不兼容，则该事物就等待锁释放。</strong></p>
-<h3 id="死锁和避免死锁"><a href="#死锁和避免死锁" class="headerlink" title="死锁和避免死锁"></a>死锁和避免死锁</h3><p><strong>InnoDB的行级锁是基于索引实现的，如果查询语句为命中任何索引，那么InnoDB会使用表级锁.</strong> 此外，InnoDB的行级锁是针对索引加的锁，不针对数据记录，因此即使访问不同行的记录，如果使用了相同的索引键仍然会出现锁冲突，还需要注意的是，在通过</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT ...LOCK IN SHARE MODE;1</span><br></pre></td></tr></table></figure>
-<p>或</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT ...FOR UPDATE;1</span><br></pre></td></tr></table></figure>
-<p>使用锁的时候，如果表没有定义任何索引，那么InnoDB会创建一个隐藏的聚簇索引并使用这个索引来加记录锁。</p>
-<p>此外，<strong>不同于MyISAM总是一次性获得所需的全部锁，InnoDB的锁是逐步获得的，当两个事务都需要获得对方持有的锁，导致双方都在等待，这就产生了死锁。</strong> 发生死锁后，InnoDB一般都可以检测到，并使一个事务释放锁回退，另一个则可以获取锁完成事务，我们可以采取以上方式避免死锁：</p>
-<ul>
-<li><strong>通过表级锁来减少死锁产生的概率；</strong></li>
-<li><strong>多个程序尽量约定以相同的顺序访问表（这也是解决并发理论中哲学家就餐问题的一种思路）；</strong></li>
-<li><strong>同一个事务尽可能做到一次锁定所需要的所有资源。</strong></li>
-</ul>
-<h3 id="总结与补充"><a href="#总结与补充" class="headerlink" title="总结与补充"></a>总结与补充</h3><p><strong>MyISAM和InnoDB存储引擎使用的锁：</strong></p>
-<ul>
-<li>MyISAM采用表级锁(table-level locking)。</li>
-<li>InnoDB支持行级锁(row-level locking)和表级锁,默认为行级锁</li>
-</ul>
-<p><strong>表级锁和行级锁对比：</strong></p>
-<ul>
-<li><strong>表级锁：</strong> Mysql中锁定 <strong>粒度最大</strong> 的一种锁，对当前操作的整张表加锁，实现简单，资源消耗也比较少，加锁快，不会出现死锁。其锁定粒度最大，触发锁冲突的概率最高，并发度最低，MyISAM和 InnoDB引擎都支持表级锁。</li>
-<li><strong>行级锁：</strong> Mysql中锁定 <strong>粒度最小</strong> 的一种锁，只针对当前操作的行进行加锁。 行级锁能大大减少数据库操作的冲突。其加锁粒度最小，并发度高，但加锁的开销也最大，加锁慢，会出现死锁。</li>
-</ul>
-<p><strong>补充：</strong></p>
-<p><strong>页级锁：</strong> MySQL中锁定粒度介于行级锁和表级锁中间的一种锁。表级锁速度快，但冲突多，行级冲突少，但速度慢。页级进行了折衷，一次锁定相邻的一组记录。BDB支持页级锁。开销和加锁时间界于表锁和行锁之间，会出现死锁。锁定粒度界于表锁和行锁之间，并发度一般。</p>
-
-          
+          <p>最近面试经常碰到数据库的基础问题，今天就来总结下！</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/13/mysql入门/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

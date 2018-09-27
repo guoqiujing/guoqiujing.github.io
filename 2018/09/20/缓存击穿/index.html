@@ -77,17 +77,17 @@
 
 
 
-<meta name="description" content="在高并发下,多线程同时查询同一个资源,如果缓存中没有这个资源,那么这些线程都会去数据库查找,对数据库造成极大压力,缓存失去存在的意义。 当查询的时候，先从Redis集群中取，如果没有，那么再从DB中查询并设置到Redis集群中。 假设从DB中查询需要2S，那么显然这段时间内过来的请求，在上述的代码下，会全部走DB查询，相当于缓存被直接穿透，这样的现象就称之为“缓存击穿”！ 解决办法： 通过syn">
+<meta name="description" content="在高并发下,多线程同时查询同一个资源,如果缓存中没有这个资源,那么这些线程都会去数据库查找,对数据库造成极大压力,缓存失去存在的意义。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="缓存击穿">
 <meta property="og:url" content="http://yoursite.com/2018/09/20/缓存击穿/index.html">
 <meta property="og:site_name" content="爱编程的川">
-<meta property="og:description" content="在高并发下,多线程同时查询同一个资源,如果缓存中没有这个资源,那么这些线程都会去数据库查找,对数据库造成极大压力,缓存失去存在的意义。 当查询的时候，先从Redis集群中取，如果没有，那么再从DB中查询并设置到Redis集群中。 假设从DB中查询需要2S，那么显然这段时间内过来的请求，在上述的代码下，会全部走DB查询，相当于缓存被直接穿透，这样的现象就称之为“缓存击穿”！ 解决办法： 通过syn">
+<meta property="og:description" content="在高并发下,多线程同时查询同一个资源,如果缓存中没有这个资源,那么这些线程都会去数据库查找,对数据库造成极大压力,缓存失去存在的意义。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-27T12:30:51.952Z">
+<meta property="og:updated_time" content="2018-09-27T13:01:49.963Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="缓存击穿">
-<meta name="twitter:description" content="在高并发下,多线程同时查询同一个资源,如果缓存中没有这个资源,那么这些线程都会去数据库查找,对数据库造成极大压力,缓存失去存在的意义。 当查询的时候，先从Redis集群中取，如果没有，那么再从DB中查询并设置到Redis集群中。 假设从DB中查询需要2S，那么显然这段时间内过来的请求，在上述的代码下，会全部走DB查询，相当于缓存被直接穿透，这样的现象就称之为“缓存击穿”！ 解决办法： 通过syn">
+<meta name="twitter:description" content="在高并发下,多线程同时查询同一个资源,如果缓存中没有这个资源,那么这些线程都会去数据库查找,对数据库造成极大压力,缓存失去存在的意义。">
 
 
 
@@ -317,8 +317,8 @@
       
 
       
-        <a id="more"></a>
-<p>在高并发下,多线程同时查询同一个资源,如果缓存中没有这个资源,那么这些线程都会去数据库查找,对数据库造成极大压力,缓存失去存在的意义。</p>
+        <p>在高并发下,多线程同时查询同一个资源,如果缓存中没有这个资源,那么这些线程都会去数据库查找,对数据库造成极大压力,缓存失去存在的意义。</p>
+<a id="more"></a>
 <p><strong>当查询的时候，先从Redis集群中取，如果没有，那么再从DB中查询并设置到Redis集群中。</strong></p>
 <p><strong>假设从DB中查询需要2S，那么显然这段时间内过来的请求，在上述的代码下，会全部走DB查询，相当于缓存被直接穿透，这样的现象就称之为“缓存击穿”！</strong></p>
 <p>解决办法：</p>

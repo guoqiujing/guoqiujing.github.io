@@ -77,14 +77,20 @@
 
 
 
+<meta name="description" content="为什么要用缓存？ 如果缓存中有数据就不用从数据库中获取，大大提高系统性能。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mybatis缓存机制">
 <meta property="og:url" content="http://yoursite.com/2018/09/20/mybatis缓存机制/index.html">
 <meta property="og:site_name" content="爱编程的川">
+<meta property="og:description" content="为什么要用缓存？ 如果缓存中有数据就不用从数据库中获取，大大提高系统性能。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-27T12:30:45.999Z">
+<meta property="og:image" content="http://yoursite.com/2018/09/20/mybatis缓存机制/1538052138166.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/20/mybatis缓存机制/1538052905870.png">
+<meta property="og:updated_time" content="2018-09-27T13:01:33.884Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mybatis缓存机制">
+<meta name="twitter:description" content="为什么要用缓存？ 如果缓存中有数据就不用从数据库中获取，大大提高系统性能。">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/20/mybatis缓存机制/1538052138166.png">
 
 
 
@@ -314,7 +320,42 @@
       
 
       
-        <a id="more"></a>
+        <p>为什么要用缓存？</p>
+<p>如果缓存中有数据就不用从数据库中获取，大大提高系统性能。</p>
+<a id="more"></a>
+<h2 id="一级缓存"><a href="#一级缓存" class="headerlink" title="一级缓存"></a>一级缓存</h2><p>一级缓存是SqlSession级别的缓存。在操作数据库时需要构造 sqlSession对象，在对象中有一个数据结构（HashMap）用于存储缓存数据。不同的sqlSession之间的缓存数据区域（HashMap）是互相不影响的。</p>
+<h3 id="一级缓存工作原理"><a href="#一级缓存工作原理" class="headerlink" title="一级缓存工作原理"></a>一级缓存工作原理</h3><ol>
+<li>第一次发起查询用户id为1的用户信息，先去找缓存中是否有id为1的用户信息，如果没有，从数据库查询用户信息。</li>
+<li><p>得到用户信息，将用户信息存储到一级缓存中。</p>
+</li>
+<li><p>如果sqlSession去执行commit操作（执行插入、更新、删除），清空SqlSession中的一级缓存，这样做的目的为了让缓存中存储的是最新的信息，避免脏读。</p>
+</li>
+<li>第二次发起查询用户id为1的用户信息，先去找缓存中是否有id为1的用户信息，缓存中有，直接从缓存中获取用户信息。</li>
+</ol>
+<p><img src="/2018/09/20/mybatis缓存机制/1538052138166.png" alt="1538052138166"></p>
+<h2 id="二级缓存"><a href="#二级缓存" class="headerlink" title="二级缓存"></a>二级缓存</h2><p>二级缓存是mapper级别的缓存，多个SqlSession去操作同一个Mapper的sql语句，多个SqlSession可以共用二级缓存，二级缓存是跨SqlSession的。</p>
+<p>二级缓存与一级缓存区别，二级缓存的范围更大，多个 sqlSession 可以共享一个 Mapper 的二级缓存区域。</p>
+<p>比如：UserMapper有一个二级缓存区域（按namespace分） ，其它mapper也有自己的二级缓存区域（按namespace分）。</p>
+<p>每一个namespace的mapper都有一个二缓存区域，两个mapper的namespace如果相同，这两个mapper执行sql查询到数据将存在相同的二级缓存区域中。</p>
+<h3 id="二级缓存的工作原理"><a href="#二级缓存的工作原理" class="headerlink" title="二级缓存的工作原理"></a>二级缓存的工作原理</h3><ol>
+<li><p>首先开启mybatis的二级缓存。</p>
+</li>
+<li><p>sqlSession1去查询用户id为1的用户信息，查询到用户信息会将查询数据存储到二级缓存中。</p>
+</li>
+<li>如果SqlSession3去执行相同 mapper下sql，执行commit提交，清空该 mapper下的二级缓存区域的数据。</li>
+<li>sqlSession2去查询用户id为1的用户信息，去缓存中找是否存在数据，如果存在直接从缓存中取出数据。</li>
+</ol>
+<p><img src="/2018/09/20/mybatis缓存机制/1538052905870.png" alt="1538052905870"></p>
+<h3 id="开启二级缓存"><a href="#开启二级缓存" class="headerlink" title="开启二级缓存"></a>开启二级缓存</h3><p>mybaits的二级缓存是mapper范围级别，除了在SqlMapConfig.xml设置二级缓存的总开关，还要在具体的mapper.xml中开启二级缓存。</p>
+<ol>
+<li>在核心配置文件SqlMapConfig.xml中加入</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;setting name=*&quot;cacheEnabled&quot;* value=*&quot;true&quot;*/&gt;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>在UserMapper.xml中开启二缓存，UserMapper.xml下的sql执行完成会存储到它的缓存区域（HashMap）。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;cache/&gt;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -402,8 +443,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -474,6 +524,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一级缓存"><span class="nav-number">1.</span> <span class="nav-text">一级缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一级缓存工作原理"><span class="nav-number">1.1.</span> <span class="nav-text">一级缓存工作原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二级缓存"><span class="nav-number">2.</span> <span class="nav-text">二级缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二级缓存的工作原理"><span class="nav-number">2.1.</span> <span class="nav-text">二级缓存的工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开启二级缓存"><span class="nav-number">2.2.</span> <span class="nav-text">开启二级缓存</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
