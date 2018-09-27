@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="的川, 秋景" />
+  <meta name="keywords" content="MQ," />
 
 
 
@@ -78,25 +78,26 @@
 
 
 <meta name="description" content="MQ是什么?MQ，常说的消息队列，是一种跨进程的通信机制，用于上下游传递消息。">
+<meta name="keywords" content="MQ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MQ是个啥">
 <meta property="og:url" content="http://yoursite.com/2018/09/12/MQ是个啥/index.html">
 <meta property="og:site_name" content="爱编程的川">
 <meta property="og:description" content="MQ是什么?MQ，常说的消息队列，是一种跨进程的通信机制，用于上下游传递消息。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://images.cnblogs.com/cnblogs_com/rjzheng/1202350/o_jieou5.png">
-<meta property="og:image" content="https://images.cnblogs.com/cnblogs_com/rjzheng/1202350/o_jieou6.png">
-<meta property="og:image" content="https://images.cnblogs.com/cnblogs_com/rjzheng/1202350/o_yibu2.png">
-<meta property="og:image" content="https://images.cnblogs.com/cnblogs_com/rjzheng/1202350/o_yibu3.png">
-<meta property="og:image" content="https://images.cnblogs.com/cnblogs_com/rjzheng/1202350/o_xuefeng1.png">
-<meta property="og:image" content="https://images.cnblogs.com/cnblogs_com/rjzheng/1202350/o_xuefeng2.png">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/820332/201601/820332-20160124221143281-46837068.png">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/820332/201601/820332-20160124221155968-1666724216.png">
-<meta property="og:updated_time" content="2018-09-13T13:54:44.292Z">
+<meta property="og:image" content="http://yoursite.com/2018/09/12/MQ是个啥/o_jieou5.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/12/MQ是个啥/o_jieou6.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/12/MQ是个啥/o_yibu2.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/12/MQ是个啥/o_yibu3.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/12/MQ是个啥/o_xuefeng1.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/12/MQ是个啥/o_xuefeng2.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/12/MQ是个啥/820332-20160124221143281-46837068.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/12/MQ是个啥/820332-20160124221155968-1666724216.png">
+<meta property="og:updated_time" content="2018-09-27T13:19:02.652Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MQ是个啥">
 <meta name="twitter:description" content="MQ是什么?MQ，常说的消息队列，是一种跨进程的通信机制，用于上下游传递消息。">
-<meta name="twitter:image" content="https://images.cnblogs.com/cnblogs_com/rjzheng/1202350/o_jieou5.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/12/MQ是个啥/o_jieou5.png">
 
 
 
@@ -329,27 +330,27 @@
         <h2 id="MQ是什么"><a href="#MQ是什么" class="headerlink" title="MQ是什么?"></a>MQ是什么?</h2><p>MQ，常说的消息队列，是一种跨进程的通信机制，用于上下游传递消息。 </p>
 <a id="more"></a>    
 <h2 id="为什么要使用MQ"><a href="#为什么要使用MQ" class="headerlink" title="为什么要使用MQ?"></a>为什么要使用MQ?</h2><p>解耦、异步、削峰、应用通信。</p>
-<h3 id="解耦"><a href="#解耦" class="headerlink" title="解耦"></a>解耦</h3><p>传统模式:<br><img src="https://images.cnblogs.com/cnblogs_com/rjzheng/1202350/o_jieou5.png" alt="img"><br>传统模式的缺点：</p>
+<h3 id="解耦"><a href="#解耦" class="headerlink" title="解耦"></a>解耦</h3><p>传统模式:<br><img src="/2018/09/12/MQ是个啥/o_jieou5.png" alt="img"><br>传统模式的缺点：</p>
 <ul>
 <li>系统间耦合性太强，如上图所示，系统A在代码中直接调用系统B和系统C的代码，如果将来D系统接入，系统A还需要修改代码，过于麻烦！</li>
 </ul>
-<p>中间件模式:<br><img src="https://images.cnblogs.com/cnblogs_com/rjzheng/1202350/o_jieou6.png" alt="img"><br>中间件模式的的优点：</p>
+<p>中间件模式:<br><img src="/2018/09/12/MQ是个啥/o_jieou6.png" alt="img"><br>中间件模式的的优点：</p>
 <ul>
 <li>将消息写入消息队列，需要消息的系统自己从消息队列中订阅，从而系统A不需要做任何修改。</li>
 </ul>
-<h3 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h3><p>传统模式:<br><img src="https://images.cnblogs.com/cnblogs_com/rjzheng/1202350/o_yibu2.png" alt="img"><br>传统模式的缺点：</p>
+<h3 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h3><p>传统模式:<br><img src="/2018/09/12/MQ是个啥/o_yibu2.png" alt="img"><br>传统模式的缺点：</p>
 <ul>
 <li>一些非必要的业务逻辑以同步的方式运行，太耗费时间。</li>
 </ul>
-<p>中间件模式:<br><img src="https://images.cnblogs.com/cnblogs_com/rjzheng/1202350/o_yibu3.png" alt="img"><br>中间件模式的的优点：</p>
+<p>中间件模式:<br><img src="/2018/09/12/MQ是个啥/o_yibu3.png" alt="img"><br>中间件模式的的优点：</p>
 <ul>
 <li>将消息写入消息队列，非必要的业务逻辑以异步的方式运行，加快响应速度</li>
 </ul>
-<h3 id="削峰"><a href="#削峰" class="headerlink" title="削峰"></a>削峰</h3><p>传统模式<br><img src="https://images.cnblogs.com/cnblogs_com/rjzheng/1202350/o_xuefeng1.png" alt="img"><br>传统模式的缺点：</p>
+<h3 id="削峰"><a href="#削峰" class="headerlink" title="削峰"></a>削峰</h3><p>传统模式<br><img src="/2018/09/12/MQ是个啥/o_xuefeng1.png" alt="img"><br>传统模式的缺点：</p>
 <ul>
 <li>并发量大的时候，所有的请求直接怼到数据库，造成数据库连接异常</li>
 </ul>
-<p>中间件模式:<br><img src="https://images.cnblogs.com/cnblogs_com/rjzheng/1202350/o_xuefeng2.png" alt="img"><br>中间件模式的的优点：</p>
+<p>中间件模式:<br><img src="/2018/09/12/MQ是个啥/o_xuefeng2.png" alt="img"><br>中间件模式的的优点：</p>
 <ul>
 <li>系统A慢慢的按照数据库能处理的并发量，从消息队列中慢慢拉取消息。在生产中，这个短暂的高峰期积压是允许的。</li>
 </ul>
@@ -362,7 +363,7 @@
 <h2 id="JMS消息服务"><a href="#JMS消息服务" class="headerlink" title="JMS消息服务"></a>JMS消息服务</h2><p>讲消息队列就不得不提JMS 。JMS（<a href="http://lib.csdn.net/base/java" target="_blank" rel="noopener">Java </a>Message Service,<a href="http://lib.csdn.net/base/javase" target="_blank" rel="noopener">Java</a>消息服务）API是一个消息服务的标准/规范，允许应用程序组件基于JavaEE平台创建、发送、接收和读取消息。它使分布式通信耦合度更低，消息服务更加可靠以及异步性。</p>
 <p>在J2EE架构模式中，有消息服务者模式，用于实现消息与应用直接的解耦。</p>
 <h3 id="消息模型"><a href="#消息模型" class="headerlink" title="消息模型"></a>消息模型</h3><p>在JMS标准中，有两种消息模型P2P（Point to Point）,Publish/Subscribe(Pub/Sub)。</p>
-<h4 id="P2P模式"><a href="#P2P模式" class="headerlink" title="P2P模式"></a>P2P模式</h4><p> <img src="http://images2015.cnblogs.com/blog/820332/201601/820332-20160124221143281-46837068.png" alt="img"></p>
+<h4 id="P2P模式"><a href="#P2P模式" class="headerlink" title="P2P模式"></a>P2P模式</h4><p> <img src="/2018/09/12/MQ是个啥/820332-20160124221143281-46837068.png" alt="img"></p>
 <p>P2P模式包含三个角色：消息队列（Queue），发送者(Sender)，接收者(Receiver)。</p>
 <p>每个消息都被发送到一个特定的队列，接收者从队列中获取消息。队列保留着消息，直到他们被消费或超时。</p>
 <p>P2P的特点</p>
@@ -372,7 +373,7 @@
 <li>接收者在成功接收消息之后需向队列应答成功 </li>
 </ul>
 <p>如果希望发送的每个消息都会被成功处理的话，那么需要P2P模式。</p>
-<h4 id="Pub-sub模式"><a href="#Pub-sub模式" class="headerlink" title="Pub/sub模式"></a>Pub/sub模式</h4><p> <img src="http://images2015.cnblogs.com/blog/820332/201601/820332-20160124221155968-1666724216.png" alt="img"></p>
+<h4 id="Pub-sub模式"><a href="#Pub-sub模式" class="headerlink" title="Pub/sub模式"></a>Pub/sub模式</h4><p> <img src="/2018/09/12/MQ是个啥/820332-20160124221155968-1666724216.png" alt="img"></p>
 <p>包含三个角色：主题（Topic），发布者（Publisher），订阅者（Subscriber） </p>
 <p>多个发布者将消息发送到Topic，系统将这些消息传递给多个订阅者。</p>
 <p>Pub/Sub的特点</p>
@@ -419,6 +420,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MQ/" rel="tag"># MQ</a>
+          
+        </div>
       
 
       
@@ -535,7 +542,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
